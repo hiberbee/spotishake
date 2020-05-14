@@ -6,7 +6,7 @@
     "baseUrl": ".",
     "checkJs": false,
     "esModuleInterop": true,
-    "experimentalDecorators": false,
+    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
     "isolatedModules": true,
@@ -22,20 +22,13 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "ES6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "typeRoots": ["node_modules/@types"],
     "noEmit": true
   },
-  "exclude": [
-    "build",
-    "public",
-    "node_modules"
-  ],
-  "include": [
-    "src"
-  ]
+  "paths": {
+    "src/*": ["src/*"]
+  },
+  "exclude": ["build", "public", "node_modules"],
+  "include": ["src", "public/App.test.tsx"]
 }
