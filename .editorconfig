@@ -1,0 +1,8 @@
+root = true
+
+[*]
+tab_width = 2
+
+[Caddyfile]
+tab_width = 4
+indent_style = tab

@@ -1,0 +1,22 @@
+{
+  "name": "spotishake-api",
+  "private": true,
+  "dependencies": {
+    "@apollo/gateway": "^0.16.0",
+    "serve": "^11.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.2"
+  },
+  "scripts": {
+    "build": "tsc -p ."
+  }
+}

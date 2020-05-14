@@ -1,0 +1,11 @@
+.DS_Store
+.git
+src
+node_modules
+build
+public
+Dockerfile
+*ignore
+*json
+*file
+*md

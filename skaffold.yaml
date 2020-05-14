@@ -1,0 +1,25 @@
+apiVersion: skaffold/v2beta3
+kind: Config
+build:
+  local:
+    push: false
+    concurrency: 0
+    useBuildkit: true
+  tagPolicy:
+    sha256: {}
+  artifacts:
+  - image: spotishake/web
+    context: web
+  - image: spotishake/api
+    context: api
+deploy:
+  helm:
+    releases:
+    - name: spotishake-web
+      chartPath: web
+      values:
+        image: spotishake/web
+    - name: spotishake-api
+      chartPath: api
+      values:
+        image: spotishake/api

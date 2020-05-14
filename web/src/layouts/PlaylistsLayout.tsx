@@ -1,0 +1,50 @@
+import React from "react";
+import { Layout, Menu } from "antd";
+import {
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from "@ant-design/icons";
+
+function PlaylistsLayout(): JSX.Element {
+  return (
+    <Layout style={{ minHeight: "100vh" }}>
+      <Layout.Sider>
+        <div className="logo" />
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]}>
+          <Menu.Item key="1" icon={<UserOutlined />}>
+            nav 1
+          </Menu.Item>
+          <Menu.Item key="2" icon={<VideoCameraOutlined />}>
+            nav 2
+          </Menu.Item>
+          <Menu.Item key="3" icon={<UploadOutlined />}>
+            nav 3
+          </Menu.Item>
+          <Menu.Item key="4" icon={<UserOutlined />}>
+            nav 4
+          </Menu.Item>
+        </Menu>
+      </Layout.Sider>
+      <Layout>
+        <Layout.Header
+          className="site-layout-sub-header-background"
+          style={{ padding: 0, height: 68 }}
+        />
+        <Layout.Content style={{ margin: "24px 16px 0" }}>
+          <div
+            className="site-layout-background"
+            style={{ padding: 24, minHeight: 360 }}
+          >
+            content
+          </div>
+        </Layout.Content>
+        <Layout.Footer style={{ textAlign: "center" }}>
+          Ant Design ©2018 Created by Ant UED
+        </Layout.Footer>
+      </Layout>
+    </Layout>
+  );
+}
+
+export default PlaylistsLayout;

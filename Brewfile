@@ -1,0 +1,6 @@
+brew "kubernetes-cli"
+brew "minikube"
+brew "skaffold"
+brew "helm"
+brew "helmfile"
+brew "container-structure-tests"
