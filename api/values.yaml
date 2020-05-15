@@ -37,7 +37,8 @@ service:
   type: ClusterIP
   name: http
   port: 80
-  targetPort: 8080
+  targetPort: 4000
+  healthCheckUri: /
 
 ingress:
   enabled: false

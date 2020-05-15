@@ -24,10 +24,11 @@
     "strict": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "ES2015",
-    "removeComments": true,
+    "target": "ES5",
+    "removeComments": true
   },
   "exclude": [
+    "build",
     "node_modules"
   ],
   "include": [
