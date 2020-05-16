@@ -1,6 +1,6 @@
 # SpotiShake
 
-Spotify playlist mixer with revision history
+Spotify playlist manager with random shuffling, duplicate tracking and revision history.
 
 ## Web
 
@@ -20,30 +20,35 @@ See [documentation](./api/README.md)
 
 Assuming, you have Mac with [Brew](https://brew.sh) installed, execute in your command line from project dir:
 
-    brew bundle
+```bash
+brew bundle
+```
 
 #### Windows
 
 In case of Windows, with [Chocolatey](https://chocolatey.org) installed, execute in your command line from project dir:
 
-
-    chocolatey install Packages.config
+```powershell
+chocolatey install Packages.config
+```
 
 2. Create Kubernetes local cluster
 
-    
-    minikube start
+```console
+minikube start
+```
 
 3. Build and deploy applications with Skaffold
 
-    
-    slaffold run --port-forward=true
+```bash
+skaffold run --port-forward=true
+```
 
 4. Verify you can access web on [http://localhost:80](http://localhost:80) - you should see successful info, something like
 
 ```
- - deployment/spotishake-web is ready.
- - deployment/spotishake-api is ready.
+- deployment/spotishake-web is ready.
+- deployment/spotishake-api is ready.
 
 Deployments stabilized in 9.4093799s
 
