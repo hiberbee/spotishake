@@ -12,6 +12,3 @@ jobs:
       - run: terraform validate
       - id: plan
         run: terraform plan -var digitalocean_api_token=${{ secrets.digitalocean_api_token }} -out plan.tf
-      - run: echo ${{ steps.plan.outputs.stdout }}
-      - run: echo ${{ steps.plan.outputs.stderr }}
-      - run: echo ${{ steps.plan.outputs.exitcode }}
