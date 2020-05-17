@@ -10,9 +10,11 @@ See [documentation](./web/README.md)
 
 See [documentation](./api/README.md)
 
-## Development
+### Cloud Infrastructure
 
-### Local Environment
+See [documentation](./cloud/README.md)
+
+## Local Environment
 
 1. Install dependencies for your host system.
 

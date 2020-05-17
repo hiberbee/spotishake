@@ -1,0 +1,11 @@
+repositories:
+  - name: stable
+    url: https://kubernetes-charts.storage.googleapis.com
+
+releases:
+  - name: prometheus-operator
+    namespace: kube-system
+    chart: stable/prometheus-operator
+  - name: metrics-server
+    namespace: kube-system
+    chart: stable/metrics-server

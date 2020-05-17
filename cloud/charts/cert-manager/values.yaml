@@ -1,0 +1,18 @@
+cert-manager:
+  installCRDs: true # https://github.com/jetstack/cert-manager/releases/download/v0.15.0/cert-manager.crds.yaml
+  ingressShim:
+    defaultIssuerName: letsencrypt
+    defaultIssuerKind: ClusterIssuer
+    defaultIssuerGroup: cert-manager.io
+  prometheus:
+    enabled: true
+
+dnsProvider:
+  name: digitalocean
+  secret:
+    key: api-token
+    value: ""
+
+acme:
+  url: https://acme-v02.api.letsencrypt.org/directory
+  email: admin@spotishake.me

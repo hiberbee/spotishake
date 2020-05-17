@@ -1,0 +1,4 @@
+helmDefaults:
+  cleanupOnFail: true
+  historyMax: 5
+  kubeContext: do-fra1-spotishake

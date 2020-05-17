@@ -1,0 +1,15 @@
+nginx-ingress:
+  defaultBackend:
+    enabled: false
+  controller:
+    config:
+      use-http2: "true"
+    service:
+      omitClusterIP: true
+      externalTrafficPolicy: "Local"
+      annotations:
+        service.beta.kubernetes.io/do-loadbalancer-healthcheck-protocol: "tcp"
+        service.beta.kubernetes.io/do-loadbalancer-http2-ports: "443"
+        service.beta.kubernetes.io/do-loadbalancer-protocol: "http2"
+        service.beta.kubernetes.io/do-loadbalancer-redirect-http-to-https: "true"
+        service.beta.kubernetes.io/do-loadbalancer-tls-passthrough: "true"

@@ -1,0 +1,10 @@
+releases:
+  - name: nginx-ingress
+    namespace: kube-system
+    chart: charts/nginx-ingress
+
+  - name: cert-manager
+    namespace: cert-manager
+    chart: charts/cert-manager
+    values:
+      - dnsProvider.apiToken: "{{ .RequiredEnv.TF_VAR_DIGITALOCEAN_API_TOKEN }}"
