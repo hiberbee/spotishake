@@ -5,7 +5,6 @@ jobs:
     defaults:
       run:
         working-directory: cloud
-        shell: /bin/sh
     steps:
       - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v1
