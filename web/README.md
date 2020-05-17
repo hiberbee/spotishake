@@ -37,6 +37,13 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Opened issues
+
+### Apollo Client
+
+- `Cannot read property 'getStore' of undefined` in Apollo Chrome extension; temporary workaround - version frozen `"@apollo/client": "^3.0.0-beta.39"` because of [issue](https://github.com/apollographql/apollo-client-devtools/issues/250)
+
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

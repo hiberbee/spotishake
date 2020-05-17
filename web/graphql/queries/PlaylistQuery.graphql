@@ -1,0 +1,8 @@
+query Playlist($id: ID!) {
+  playlist(id: $id) {
+    ...PlaylistFragment
+    tracks {
+      ...TrackFragment
+    }
+  }
+}

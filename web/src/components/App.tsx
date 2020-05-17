@@ -1,23 +1,43 @@
-import React, { ReactElement, Suspense, lazy } from 'react'
+import React, { lazy, ReactElement, Suspense } from 'react'
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/client'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import 'src/App.css'
+import { ConfigProvider, Result, Spin } from 'antd'
+import DefaultLayout from 'src/layouts/DefaultLayout'
+import 'src/components/App.css'
+import IndexPage from '../routes/IndexPage'
 
-import PlaylistsLayout from 'src/layouts/PlaylistsLayout'
-
-const Page1 = lazy(() => import('../routes/Page1'))
-const Page2 = lazy(() => import('../routes/Page2'))
+const PlaylistPage = lazy(() => import('../routes/PlaylistPage'))
+const AboutPage = lazy(() => import('../routes/AboutPage'))
+const NotFoundPage = lazy(() => import('../routes/NotFoundPage'))
 
 export default function App(): ReactElement<{}> {
+  const uri = process.env.API_URL ?? 'http://localhost:4000/graphql'
+  const client = new ApolloClient({
+    cache: new InMemoryCache(),
+    connectToDevTools: true,
+    link: new HttpLink({
+      uri,
+    }),
+  })
+
   return (
-    <Router>
-      <PlaylistsLayout>
-        <Suspense fallback={<div>Loading Page...</div>}>
-          <Switch>
-            <Route exact path="/" component={Page1} />
-            <Route path="/page" component={Page2} />
-          </Switch>
-        </Suspense>
-      </PlaylistsLayout>
-    </Router>
+    <ConfigProvider>
+      <ApolloProvider client={client}>
+        <Router>
+          <DefaultLayout>
+            <Suspense
+              fallback={<Result title={'Loading page...'} icon={<Spin spinning={true} />} />}
+            >
+              <Switch>
+                <Route exact path="/" component={IndexPage} />
+                <Route path="/about" component={AboutPage} />
+                <Route path="/playlists/:id" component={PlaylistPage} />
+                <Route component={NotFoundPage} />
+              </Switch>
+            </Suspense>
+          </DefaultLayout>
+        </Router>
+      </ApolloProvider>
+    </ConfigProvider>
   )
 }

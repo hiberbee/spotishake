@@ -1,0 +1,30 @@
+schema:
+  - http://localhost:4000/graphql
+#  - http://localhost:8080/graphql
+documents:
+  - ./graphql/**/*.graphql
+config:
+  apolloClientVersion: 3
+  withHooks: true
+  maybeValue: T
+  skipTypename: false
+  preResolveTypes: true
+  avoidOptionals: false
+  declarationKind:
+    type: interface
+    input: interface
+  federation: true
+  flattenGeneratedTypes: true
+  namingConvention:
+    enumValues: change-case#camelCase
+    typeNames: change-case#pascalCase
+generates:
+  ./src/types/api.tsx:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+    - eslint --fix --quiet

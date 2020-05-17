@@ -1,0 +1,4 @@
+fragment TrackFragment on Track {
+  id
+  name
+}

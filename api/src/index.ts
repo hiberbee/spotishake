@@ -1,32 +1,35 @@
 import { ApolloServer, gql } from 'apollo-server'
-import { buildFederatedSchema } from '@apollo/federation'
 import { InMemoryLRUCache } from 'apollo-server-caching'
+import { buildFederatedSchema } from '@apollo/federation'
 
-const resolvers = {
-  Query: {
-    ping: (root, args, context) => 'pong',
-  },
-}
+const cache = new InMemoryLRUCache()
+
+const port = process.env.NODE_PORT ?? 8080
 
 const typeDefs = gql`
   type Query {
-    ping: String!
+    _app: String!
   }
 `
 
-const debug = process.env.NODE_ENV === 'development'
+const resolvers = {
+  Query: {
+    _app: (root, args, context) => 'SpotiShake',
+  },
+}
 
 const apolloServer = new ApolloServer({
   engine: {
     apiKey: process.env.APOLLO_ENGINE_KEY,
     schemaTag: process.env.NODE_ENV,
   },
-  debug: debug,
-  tracing: debug,
-  introspection: debug,
-  cache: new InMemoryLRUCache(),
+  cache,
+  debug: true,
+  introspection: true,
+  tracing: true,
+  persistedQueries: { cache },
   cors: true,
-  schema: buildFederatedSchema({ resolvers, typeDefs }),
+  schema: buildFederatedSchema([{ typeDefs, resolvers }]),
 })
 
-apolloServer.listen(4000).then(value => console.log(`Apollo Gateway started on ${value.url}`))
+apolloServer.listen(port).then(value => console.log(`Apollo Gateway started on ${value.url}`))

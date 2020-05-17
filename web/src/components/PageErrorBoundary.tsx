@@ -1,29 +1,36 @@
 import React, { ErrorInfo } from 'react'
+import { Result } from 'antd'
 
 type Props = {}
 type State = {
   hasError: boolean
+  message: string
 }
 export default class PageErrorBoundary extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    this.state = { hasError: false }
+    this.state = { hasError: false, message: '' }
   }
 
-  static getDerivedStateFromError(error: Error) {
+  static getDerivedStateFromError(error: Error): State {
     // Update state so the next render will show the fallback UI.
-    return { hasError: true }
+    return { hasError: true, message: error.message }
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     // You can also log the error to an error reporting service
-    console.error('LOG ERROR TO ERROR SERVICE')
+    console.error(`${error.message} @ ${errorInfo.componentStack}`)
   }
 
-  render() {
+  render(): React.ReactNode {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <h1>This page encountered some bad erorr. Try something again</h1>
+      return (
+        <Result
+          status={'500'}
+          title={'This page encountered error. Try something again'}
+          subTitle={this.state.message}
+        />
+      )
     }
 
     return this.props.children

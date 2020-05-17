@@ -1,7 +1,8 @@
 .DS_Store
-.env.*
+.env*
+!.env.dist
 build
 coverage
 node_modules
 *.log
-charts
+

@@ -12,7 +12,9 @@
     }
   },
   "plugins": [],
-  "rules": {},
+  "rules": {
+    "@typescript-eslint/member-delimiter-style": "off"
+  },
   "settings": {
     "react": {
       "version": "detect"

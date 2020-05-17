@@ -4,6 +4,8 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/api/build" />
+      <excludeFolder url="file://$MODULE_DIR$/cloud/.terraform" />
+      <excludeFolder url="file://$MODULE_DIR$/web/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

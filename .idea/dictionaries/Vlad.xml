@@ -2,12 +2,23 @@
   <dictionary name="Vlad">
     <words>
       <w>chocolatey</w>
+      <w>deno</w>
+      <w>digitalocean</w>
       <w>helmfile</w>
+      <w>hiberbee</w>
+      <w>hyperkit</w>
+      <w>kontena</w>
+      <w>kube</w>
       <w>minikube</w>
+      <w>mkcert</w>
+      <w>nginx</w>
+      <w>noninfringement</w>
       <w>powershell</w>
       <w>skaffold</w>
       <w>spoti</w>
       <w>spotify</w>
+      <w>spotishake</w>
+      <w>tflint</w>
       <w>zstd</w>
     </words>
   </dictionary>

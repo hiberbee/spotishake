@@ -1,3 +1,17 @@
 {
-
+  "name": "SpotiShake",
+  "projects": {
+    "spotify": {
+      "name": "Spotify API Proxy",
+      "schemaPath": "./api/build/schema.graphql",
+      "includes": ["./api/graphql/**/*.graphql"],
+      "extensions": {
+        "endpoints": {
+          "local": {
+            "url": "http://localhost:4000/graphql"
+          }
+        }
+      }
+    }
+  }
 }

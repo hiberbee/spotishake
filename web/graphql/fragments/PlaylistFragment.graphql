@@ -1,0 +1,5 @@
+fragment PlaylistFragment on Playlist {
+  id
+  name
+  image
+}

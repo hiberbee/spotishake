@@ -1,10 +1,13 @@
 import React, { ReactElement } from 'react'
 import PageErrorBoundary from 'src/components/PageErrorBoundary'
+import { Layout } from 'antd'
 
-export default (): ReactElement<{}> => {
+export default function IndexPage(): ReactElement<{}> {
   return (
     <PageErrorBoundary>
-      <div>Page 2</div>
+      <Layout>
+        <Layout.Content>Welcome</Layout.Content>
+      </Layout>
     </PageErrorBoundary>
   )
 }
