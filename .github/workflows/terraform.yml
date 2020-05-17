@@ -1,0 +1,16 @@
+on: [push]
+env:
+  TF_VAR_DIGITALOCEAN_API_TOKEN: ${secrets.digitalocean_api_token}
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v1
+      - run: terraform init
+      - run: terraform validate
+      - id: plan
+        run: terraform plan
+      - run: echo ${{ steps.plan.outputs.stdout }}
+      - run: echo ${{ steps.plan.outputs.stderr }}
+      - run: echo ${{ steps.plan.outputs.exitcode }}

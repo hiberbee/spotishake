@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1alpha3
+kind: ClusterIssuer
+metadata:
+  name: {{ index .Values "cert-manager" "ingressShim" "defaultIssuerName" }}
+spec:
+  acme:
+    privateKeySecretRef:
+      name: {{ printf "%s-%s" (index .Values "cert-manager" "ingressShim" "defaultIssuerName") "acme" }}
+    email: {{ .Values.acme.email }}
+    server: {{ .Values.acme.url }}
+    solvers:
+      - dns01:
+          digitalocean:
+            tokenSecretRef:
+              name: {{ .Values.dnsProvider.name }}
+              key: {{ .Values.dnsProvider.secret.key }}
