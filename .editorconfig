@@ -2,6 +2,13 @@ root = true
 
 [*]
 tab_width = 2
+indent_size = tab
+indent_style = space
+charset = utf-8
+
+[{*.tsx, *.ts}]
+ij_typescript_use_semicolon_after_statement = false
+ij_typescript_use_double_quotes = false
 
 [Caddyfile]
 tab_width = 4

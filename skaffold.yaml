@@ -1,4 +1,4 @@
-apiVersion: skaffold/v2beta3
+apiVersion: skaffold/v2alpha4
 kind: Config
 build:
   local:
@@ -12,6 +12,10 @@ build:
     context: web
   - image: spotishake/api
     context: api
+    docker:
+      buildArgs:
+        env: "{{ .NODE_ENV }}"
+        apolloEngineKey: "{{ .APOLLO_ENGINE_KEY }}"
 deploy:
   helm:
     releases:
