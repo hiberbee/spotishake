@@ -1,5 +1,12 @@
 # SpotiShake
 
+<p align="center">
+    <a href="https://sonarcloud.io/dashboard?id=Hiberbee_spotishake" target="_blank"><img src="https://sonarcloud.io/api/project_badges/measure?project=Hiberbee_spotishake&metric=code_smells"></a>
+    <a href="https://github.com/badges/shields/graphs/contributors" target="_blank"><img src="https://github.com/Hiberbee/spotishake/workflows/.github/workflows/docker.yml/badge.svg" /></a>
+    <a href="https://github.com/badges/shields/graphs/contributors" target="_blank"><img src="https://github.com/Hiberbee/spotishake/workflows/.github/workflows/kubernetes.yml/badge.svg" /></a>
+    <a href="https://github.com/badges/shields/graphs/contributors" target="_blank"><img src="https://github.com/Hiberbee/spotishake/workflows/.github/workflows/terraform.yml/badge.svg" /></a> 
+</p>
+
 Spotify playlist manager with random shuffling, duplicate tracking and revision history.
 
 ## Web
@@ -11,6 +18,7 @@ See [documentation](./web/README.md)
 See [documentation](./api/README.md)
 
 ### Cloud Infrastructure
+
 
 See [documentation](./cloud/README.md)
 
