@@ -1,0 +1,12 @@
+repositories:
+  - name: stable
+    url: https://kubernetes-charts.storage.googleapis.com
+
+releases:
+  - name: prometheus
+    namespace: kube-system
+    chart: ../charts/prometheus
+    values:
+      - prometheus-operator:
+          grafana:
+            adminPassword: {{ requiredEnv "GRAFANA_ADMIN_PASSWORD" }}

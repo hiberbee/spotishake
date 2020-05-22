@@ -3,7 +3,9 @@ terraform {
 }
 
 resource "digitalocean_project" "this" {
-  name = var.project_name
+  name        = var.project_name
+  description = var.project_description
+  environment = var.environment
 }
 
 resource "digitalocean_domain" "this" {
@@ -11,20 +13,20 @@ resource "digitalocean_domain" "this" {
 }
 
 resource "digitalocean_project_resources" "this" {
-  project = digitalocean_project.this.id
+  project   = digitalocean_project.this.id
   resources = [
     digitalocean_domain.this.urn
   ]
 }
 
 resource "digitalocean_kubernetes_cluster" "this" {
-  name = var.project_name
-  region = var.region
+  name    = lower(var.project_name)
+  region  = var.region
   version = var.kube_version
-  tags = var.cloud_tags
+  tags    = var.cloud_tags
   node_pool {
-    name = var.cluster_nodes_type
-    size = var.cluster_nodes_type
+    name       = var.cluster_nodes_type
+    size       = var.cluster_nodes_type
     node_count = 2
   }
 }

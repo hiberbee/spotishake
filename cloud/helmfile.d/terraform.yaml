@@ -1,0 +1,7 @@
+repositories:
+  - name: hashicorp
+    url: https://helm.releases.hashicorp.com
+
+releases: []
+#  - name: terraform-operator
+#    namespace: kube-system

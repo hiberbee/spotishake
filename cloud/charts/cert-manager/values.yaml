@@ -1,5 +1,5 @@
 cert-manager:
-  installCRDs: true # https://github.com/jetstack/cert-manager/releases/download/v0.15.0/cert-manager.crds.yaml
+  installCRDs: false # https://github.com/jetstack/cert-manager/releases/download/v0.15.0/cert-manager.crds.yaml
   ingressShim:
     defaultIssuerName: letsencrypt
     defaultIssuerKind: ClusterIssuer

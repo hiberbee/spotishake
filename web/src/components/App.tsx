@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { ConfigProvider, Result, Spin } from 'antd'
 import DefaultLayout from 'src/layouts/DefaultLayout'
 import 'src/components/App.css'
-import IndexPage from '../routes/IndexPage'
 
+const IndexPage = lazy(() => import('../routes/IndexPage'))
 const PlaylistPage = lazy(() => import('../routes/PlaylistPage'))
 const AboutPage = lazy(() => import('../routes/AboutPage'))
 const NotFoundPage = lazy(() => import('../routes/NotFoundPage'))

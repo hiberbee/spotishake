@@ -3,3 +3,4 @@
 /.kube
 *.tfstate.backup
 charts/**/*.tgz
+/.terraformrc

@@ -13,6 +13,8 @@ export type Scalars = {
   Boolean: boolean
   Int: number
   Float: number
+  ExternalUrl: any
+  ExternalId: any
   examples__JSON: any
   _FieldSet: any
 }
@@ -29,16 +31,410 @@ export type QueryPlaylistArgs = {
 
 export interface Playlist {
   __typename?: 'Playlist'
+  description?: Maybe<Scalars['String']>
+  externalUrls: Array<Maybe<Scalars['ExternalUrl']>>
+  href?: Maybe<Scalars['String']>
   id: Scalars['ID']
-  name: Scalars['String']
-  image?: Maybe<Scalars['String']>
+  images: Array<Maybe<Image>>
+  isCollaborative: Scalars['Boolean']
+  isPublicAccess: Scalars['Boolean']
+  name?: Maybe<Scalars['String']>
+  owner?: Maybe<User>
+  snapshotId?: Maybe<Scalars['String']>
   tracks: Array<Maybe<Track>>
+  uri?: Maybe<Scalars['String']>
+}
+
+export interface Image {
+  __typename?: 'Image'
+  uri: Scalars['ID']
+  height: Scalars['Int']
+  width: Scalars['Int']
+}
+
+export interface User {
+  __typename?: 'User'
+  birthdate?: Maybe<Scalars['String']>
+  country?: Maybe<CountryCode>
+  displayName?: Maybe<Scalars['String']>
+  email?: Maybe<Scalars['String']>
+  externalUrls?: Maybe<Scalars['ExternalUrl']>
+  href?: Maybe<Scalars['String']>
+  id: Scalars['ID']
+  images?: Maybe<Array<Maybe<Image>>>
+  product?: Maybe<ProductType>
+  type?: Maybe<ModelObjectType>
+  uri?: Maybe<Scalars['String']>
+}
+
+export enum CountryCode {
+  ac = 'AC',
+  ad = 'AD',
+  ae = 'AE',
+  af = 'AF',
+  ag = 'AG',
+  ai = 'AI',
+  al = 'AL',
+  am = 'AM',
+  an = 'AN',
+  ao = 'AO',
+  aq = 'AQ',
+  ar = 'AR',
+  as = 'AS',
+  at = 'AT',
+  au = 'AU',
+  aw = 'AW',
+  ax = 'AX',
+  az = 'AZ',
+  ba = 'BA',
+  bb = 'BB',
+  bd = 'BD',
+  be = 'BE',
+  bf = 'BF',
+  bg = 'BG',
+  bh = 'BH',
+  bi = 'BI',
+  bj = 'BJ',
+  bl = 'BL',
+  bm = 'BM',
+  bn = 'BN',
+  bo = 'BO',
+  bq = 'BQ',
+  br = 'BR',
+  bs = 'BS',
+  bt = 'BT',
+  bu = 'BU',
+  bv = 'BV',
+  bw = 'BW',
+  by = 'BY',
+  bz = 'BZ',
+  ca = 'CA',
+  cc = 'CC',
+  cd = 'CD',
+  cf = 'CF',
+  cg = 'CG',
+  ch = 'CH',
+  ci = 'CI',
+  ck = 'CK',
+  cl = 'CL',
+  cm = 'CM',
+  cn = 'CN',
+  co = 'CO',
+  cp = 'CP',
+  cr = 'CR',
+  cs = 'CS',
+  cu = 'CU',
+  cv = 'CV',
+  cw = 'CW',
+  cx = 'CX',
+  cy = 'CY',
+  cz = 'CZ',
+  de = 'DE',
+  dg = 'DG',
+  dj = 'DJ',
+  dk = 'DK',
+  dm = 'DM',
+  do = 'DO',
+  dz = 'DZ',
+  ea = 'EA',
+  ec = 'EC',
+  ee = 'EE',
+  eg = 'EG',
+  eh = 'EH',
+  er = 'ER',
+  es = 'ES',
+  et = 'ET',
+  eu = 'EU',
+  ez = 'EZ',
+  fi = 'FI',
+  fj = 'FJ',
+  fk = 'FK',
+  fm = 'FM',
+  fo = 'FO',
+  fr = 'FR',
+  fx = 'FX',
+  ga = 'GA',
+  gb = 'GB',
+  gd = 'GD',
+  ge = 'GE',
+  gf = 'GF',
+  gg = 'GG',
+  gh = 'GH',
+  gi = 'GI',
+  gl = 'GL',
+  gm = 'GM',
+  gn = 'GN',
+  gp = 'GP',
+  gq = 'GQ',
+  gr = 'GR',
+  gs = 'GS',
+  gt = 'GT',
+  gu = 'GU',
+  gw = 'GW',
+  gy = 'GY',
+  hk = 'HK',
+  hm = 'HM',
+  hn = 'HN',
+  hr = 'HR',
+  ht = 'HT',
+  hu = 'HU',
+  ic = 'IC',
+  id = 'ID',
+  ie = 'IE',
+  il = 'IL',
+  im = 'IM',
+  in = 'IN',
+  io = 'IO',
+  iq = 'IQ',
+  ir = 'IR',
+  is = 'IS',
+  it = 'IT',
+  je = 'JE',
+  jm = 'JM',
+  jo = 'JO',
+  jp = 'JP',
+  ke = 'KE',
+  kg = 'KG',
+  kh = 'KH',
+  ki = 'KI',
+  km = 'KM',
+  kn = 'KN',
+  kp = 'KP',
+  kr = 'KR',
+  kw = 'KW',
+  ky = 'KY',
+  kz = 'KZ',
+  la = 'LA',
+  lb = 'LB',
+  lc = 'LC',
+  li = 'LI',
+  lk = 'LK',
+  lr = 'LR',
+  ls = 'LS',
+  lt = 'LT',
+  lu = 'LU',
+  lv = 'LV',
+  ly = 'LY',
+  ma = 'MA',
+  mc = 'MC',
+  md = 'MD',
+  me = 'ME',
+  mf = 'MF',
+  mg = 'MG',
+  mh = 'MH',
+  mk = 'MK',
+  ml = 'ML',
+  mm = 'MM',
+  mn = 'MN',
+  mo = 'MO',
+  mp = 'MP',
+  mq = 'MQ',
+  mr = 'MR',
+  ms = 'MS',
+  mt = 'MT',
+  mu = 'MU',
+  mv = 'MV',
+  mw = 'MW',
+  mx = 'MX',
+  my = 'MY',
+  mz = 'MZ',
+  na = 'NA',
+  nc = 'NC',
+  ne = 'NE',
+  nf = 'NF',
+  ng = 'NG',
+  ni = 'NI',
+  nl = 'NL',
+  no = 'NO',
+  np = 'NP',
+  nr = 'NR',
+  nt = 'NT',
+  nu = 'NU',
+  nz = 'NZ',
+  om = 'OM',
+  pa = 'PA',
+  pe = 'PE',
+  pf = 'PF',
+  pg = 'PG',
+  ph = 'PH',
+  pk = 'PK',
+  pl = 'PL',
+  pm = 'PM',
+  pn = 'PN',
+  pr = 'PR',
+  ps = 'PS',
+  pt = 'PT',
+  pw = 'PW',
+  py = 'PY',
+  qa = 'QA',
+  re = 'RE',
+  ro = 'RO',
+  rs = 'RS',
+  ru = 'RU',
+  rw = 'RW',
+  sa = 'SA',
+  sb = 'SB',
+  sc = 'SC',
+  sd = 'SD',
+  se = 'SE',
+  sf = 'SF',
+  sg = 'SG',
+  sh = 'SH',
+  si = 'SI',
+  sj = 'SJ',
+  sk = 'SK',
+  sl = 'SL',
+  sm = 'SM',
+  sn = 'SN',
+  so = 'SO',
+  sr = 'SR',
+  ss = 'SS',
+  st = 'ST',
+  su = 'SU',
+  sv = 'SV',
+  sx = 'SX',
+  sy = 'SY',
+  sz = 'SZ',
+  ta = 'TA',
+  tc = 'TC',
+  td = 'TD',
+  tf = 'TF',
+  tg = 'TG',
+  th = 'TH',
+  tj = 'TJ',
+  tk = 'TK',
+  tl = 'TL',
+  tm = 'TM',
+  tn = 'TN',
+  to = 'TO',
+  tp = 'TP',
+  tr = 'TR',
+  tt = 'TT',
+  tv = 'TV',
+  tw = 'TW',
+  tz = 'TZ',
+  ua = 'UA',
+  ug = 'UG',
+  uk = 'UK',
+  um = 'UM',
+  undefined = 'UNDEFINED',
+  us = 'US',
+  uy = 'UY',
+  uz = 'UZ',
+  va = 'VA',
+  vc = 'VC',
+  ve = 'VE',
+  vg = 'VG',
+  vi = 'VI',
+  vn = 'VN',
+  vu = 'VU',
+  wf = 'WF',
+  ws = 'WS',
+  xk = 'XK',
+  ye = 'YE',
+  yt = 'YT',
+  yu = 'YU',
+  za = 'ZA',
+  zm = 'ZM',
+  zr = 'ZR',
+  zw = 'ZW',
+}
+
+export enum ProductType {
+  basicDesktop = 'BASIC_DESKTOP',
+  daypass = 'DAYPASS',
+  free = 'FREE',
+  open = 'OPEN',
+  premium = 'PREMIUM',
+}
+
+export enum ModelObjectType {
+  album = 'ALBUM',
+  artist = 'ARTIST',
+  audioFeatures = 'AUDIO_FEATURES',
+  episode = 'EPISODE',
+  genre = 'GENRE',
+  playlist = 'PLAYLIST',
+  show = 'SHOW',
+  track = 'TRACK',
+  user = 'USER',
 }
 
 export interface Track {
   __typename?: 'Track'
+  album?: Maybe<Album>
+  artists?: Maybe<Array<Maybe<Artist>>>
+  availableMarkets?: Maybe<Array<Maybe<CountryCode>>>
+  discNumber?: Maybe<Scalars['Int']>
+  durationMs?: Maybe<Scalars['Int']>
+  externalIds?: Maybe<Array<Maybe<Scalars['ExternalId']>>>
+  externalUrls?: Maybe<Scalars['ExternalUrl']>
+  href?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['String']>
+  isExplicit?: Maybe<Scalars['Boolean']>
+  isPlayable?: Maybe<Scalars['Boolean']>
+  name?: Maybe<Scalars['String']>
+  popularity?: Maybe<Scalars['Int']>
+  previewUrl?: Maybe<Scalars['String']>
+  trackNumber?: Maybe<Scalars['Int']>
+  uri?: Maybe<Scalars['String']>
+}
+
+export interface Album {
+  __typename?: 'Album'
+  albumType?: Maybe<AlbumType>
+  artists: Array<Maybe<Artist>>
+  availableMarkets?: Maybe<Array<Maybe<CountryCode>>>
+  externalIds?: Maybe<Scalars['ExternalId']>
+  externalUrls?: Maybe<Scalars['ExternalUrl']>
+  genres?: Maybe<Array<Maybe<Scalars['String']>>>
+  href?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['String']>
+  images?: Maybe<Array<Maybe<Image>>>
+  label?: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
+  popularity?: Maybe<Scalars['Int']>
+  releaseDate?: Maybe<Scalars['String']>
+  releaseDatePrecision?: Maybe<ReleaseDatePrecision>
+  tracks?: Maybe<Array<Maybe<Track>>>
+  type?: Maybe<ModelObjectType>
+  uri?: Maybe<Scalars['String']>
+}
+
+export enum AlbumType {
+  album = 'ALBUM',
+  compilation = 'COMPILATION',
+  single = 'SINGLE',
+}
+
+export interface Artist {
+  __typename?: 'Artist'
+  externalUrls: Array<Maybe<Scalars['ExternalUrl']>>
+  genres: Array<Maybe<Scalars['String']>>
+  href: Scalars['String']
   id: Scalars['ID']
+  images: Array<Maybe<Image>>
   name: Scalars['String']
+  popularity?: Maybe<Scalars['Int']>
+  uri?: Maybe<Scalars['String']>
+}
+
+export enum ReleaseDatePrecision {
+  day = 'DAY',
+  month = 'MONTH',
+  year = 'YEAR',
+}
+
+export enum AlbumGroup {
+  album = 'ALBUM',
+  appearsOn = 'APPEARS_ON',
+  compilation = 'COMPILATION',
+  single = 'SINGLE',
+}
+
+export enum CopyrightType {
+  c = 'C',
+  p = 'P',
 }
 
 export enum FakeLocale {
@@ -234,9 +630,11 @@ export type PlaylistQuery = {
   playlist?: Maybe<{
     __typename?: 'Playlist'
     id: string
-    name: string
-    image?: Maybe<string>
-    tracks: Array<Maybe<{ __typename?: 'Track'; id: string; name: string }>>
+    name?: Maybe<string>
+    description?: Maybe<string>
+    isCollaborative: boolean
+    isPublicAccess: boolean
+    tracks: Array<Maybe<{ __typename?: 'Track'; id?: Maybe<string>; name?: Maybe<string> }>>
   }>
 }
 
@@ -245,7 +643,14 @@ export type PlaylistsQueryVariables = {}
 export type PlaylistsQuery = {
   __typename?: 'Query'
   playlists: Array<
-    Maybe<{ __typename?: 'Playlist'; id: string; name: string; image?: Maybe<string> }>
+    Maybe<{
+      __typename?: 'Playlist'
+      id: string
+      name?: Maybe<string>
+      description?: Maybe<string>
+      isCollaborative: boolean
+      isPublicAccess: boolean
+    }>
   >
 }
 
@@ -253,7 +658,9 @@ export const PlaylistFragmentFragmentDoc = gql`
   fragment PlaylistFragment on Playlist {
     id
     name
-    image
+    description
+    isCollaborative
+    isPublicAccess
   }
 `
 export const TrackFragmentFragmentDoc = gql`

@@ -2,7 +2,8 @@ ARG nodeVersion=14
 FROM node:${nodeVersion}-alpine AS runtime
 WORKDIR /usr/local/src
 COPY yarn.lock package.json ./
-ENV NODE_ENV=production
+ARG env=production
+ENV NODE_ENV=${env}
 RUN yarn
 COPY . .
 RUN yarn build

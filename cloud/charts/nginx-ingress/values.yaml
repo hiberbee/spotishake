@@ -2,11 +2,12 @@ nginx-ingress:
   defaultBackend:
     enabled: false
   controller:
+    publishService:
+      enabled: true
     config:
       use-http2: "true"
     service:
       omitClusterIP: true
-      externalTrafficPolicy: "Local"
       annotations:
         service.beta.kubernetes.io/do-loadbalancer-healthcheck-protocol: "tcp"
         service.beta.kubernetes.io/do-loadbalancer-http2-ports: "443"

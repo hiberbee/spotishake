@@ -12,7 +12,7 @@ export default function DefaultLayout({ children }: Props): ReactElement<{}> {
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Layout.Sider>
+      <Layout.Sider width={250}>
         <div
           style={{
             backgroundImage: `url(${logo})`,
@@ -24,7 +24,7 @@ export default function DefaultLayout({ children }: Props): ReactElement<{}> {
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
           <Menu.ItemGroup key={'playlists'} title={'My Playlists'}>
             {data?.playlists.map(p => (
-              <Menu.Item key={`playlist-${p.id}`} icon={<img alt={p.name} src={p.image} />}>
+              <Menu.Item key={`playlist-${p.id}`}>
                 <Link to={`/playlists/${p.id}`}>{p.name}</Link>
               </Menu.Item>
             ))}
@@ -37,7 +37,7 @@ export default function DefaultLayout({ children }: Props): ReactElement<{}> {
           style={{ padding: 0, height: 64 }}
         >
           <Menu selectable={false} style={{ float: 'right' }} theme={'dark'} mode={'horizontal'}>
-            <Menu.Item key="about" icon={<QuestionCircleOutlined />}>
+            <Menu.Item key="about" icon={<QuestionCircleOutlined/>}>
               <Link to="/about">About</Link>
             </Menu.Item>
           </Menu>

@@ -1,0 +1,19 @@
+name: Infrastructure management
+on: [push]
+jobs:
+  setup:
+    name: Terraform
+    env:
+      TF_CLI_CONFIG_FILE: cloud/.terraformrc
+      TF_VAR_digitalocean_api_token: ${{ secrets.digitalocean_api_token }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cloud
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v1
+      - run: terraform init
+      - run: terraform validate
+      - run: terraform plan
+      - run: terraform apply -auto-approve

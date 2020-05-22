@@ -11,13 +11,14 @@ export default function PlaylistPage(): ReactElement<{}> {
 
   const columns: ColumnProps<Maybe<Track>>[] = [
     {
+      key: 'id',
       title: 'ID',
-      dataIndex: 'id',
+      dataIndex: ['id'],
       sorter: true,
     },
     {
       title: 'Name',
-      dataIndex: 'name',
+      dataIndex: ['name'],
     },
   ]
 
@@ -25,6 +26,7 @@ export default function PlaylistPage(): ReactElement<{}> {
     <PageErrorBoundary>
       <Typography.Title level={1}>{data?.playlist?.name}</Typography.Title>
       <Table
+        rowKey={'id'}
         size={'small'}
         loading={loading}
         bordered={true}

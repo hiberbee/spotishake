@@ -1,0 +1,21 @@
+# Default values for terraform.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nameOverride: ""
+fullnameOverride: ""
+terraform:
+  moduleRepository: git::https://github.com/hiberbee/spotishake//cloud/modules/ingress_controller
+  syncWorkspace:
+    enabled: true
+    organization: hiberbee
+    k8WatchNamespace: kube-system
+    terraformRC:
+      secretKey: api-token
+      secretName: terraform
+      secretValue: ""
+  tests:
+    enabled: false
+ingress:
+  host: chart-example.local
+
