@@ -1,7 +1,6 @@
-name: Application deployments
 on: [push]
 jobs:
-  helm-deploy:
+  deploy:
     runs-on: ubuntu-latest
     defaults:
       run:

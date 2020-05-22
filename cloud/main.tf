@@ -18,7 +18,6 @@ locals {
   description    = "Spotify playlist manager with random shuffling, duplicate tracking and revision history."
   domain         = "spotishake.me"
   cluster_region = "fra1"
-  kubeconfig     = ".kube/config"
   tags           = [
     "staging",
     "production"
@@ -39,13 +38,15 @@ module "kubernetes_provisioner" {
 }
 
 resource "local_file" "kubeconfig" {
-  filename = local.kubeconfig
+  filename = ".kube/config"
   content  = module.kubernetes_provisioner.cluster_config
 }
 
 provider "kubernetes" {
-  config_context = "do-${local.cluster_region}-${lower(local.name)}"
-  config_path    = "${path.cwd}/${local_file.kubeconfig.filename}"
+  load_config_file       = false
+  host                   = module.kubernetes_provisioner.cluster_host
+  token                  = module.kubernetes_provisioner.cluster_token
+  cluster_ca_certificate = base64decode(module.kubernetes_provisioner.cluster_ca_certificate)
 }
 
 module "ingress_dns" {

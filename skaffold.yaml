@@ -12,10 +12,6 @@ build:
     context: web
   - image: spotishake/api
     context: api
-    docker:
-      buildArgs:
-        env: "{{ .NODE_ENV }}"
-        apolloEngineKey: "{{ .APOLLO_ENGINE_KEY }}"
 deploy:
   helm:
     releases:

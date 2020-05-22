@@ -1,7 +1,6 @@
-name: Docker images
 on: [push]
 jobs:
-  docker-build:
+  build:
     runs-on: ubuntu-latest
     env:
       DOCKER_BUILDKIT: 1
