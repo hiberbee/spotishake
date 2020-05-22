@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v1
+      - run: echo "${{ secrets.terraformrc }}" >> $TF_CLI_CONFIG_FILE
       - run: terraform init
       - run: terraform validate
       - run: terraform plan
