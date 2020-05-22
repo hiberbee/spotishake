@@ -4,7 +4,7 @@ jobs:
   setup:
     name: Terraform
     env:
-      TF_CLI_CONFIG_FILE: cloud/.terraformrc
+      TF_CLI_CONFIG_FILE: .terraformrc
       TF_VAR_digitalocean_api_token: ${{ secrets.digitalocean_api_token }}
     runs-on: ubuntu-latest
     defaults:

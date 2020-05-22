@@ -1,6 +1,7 @@
 *.tfvars
 .terraform
-/.kube
+/.kube/*
 *.tfstate.backup
 charts/**/*.tgz
 /.terraformrc
+!.gitkeep
