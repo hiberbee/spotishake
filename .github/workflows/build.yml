@@ -4,9 +4,6 @@ jobs:
   docker-build:
     runs-on: ubuntu-latest
     env:
-      DOCKER_REGISTRY: docker.pkg.github.com
-      DOCKER_USERNAME: ${{ github.actor }}
-      DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
       DOCKER_BUILDKIT: 1
       NODE_ENV: production
       REACT_APP_PUBLIC_URL: https://api.spotishake.me/graphql
@@ -15,10 +12,10 @@ jobs:
 
       - uses: docker/build-push-action@master
         with:
-          username: $DOCKER_USERNAME
-          password: $DOCKER_PASSWORD
-          registry: $DOCKER_REGISTRY
-          repository: ${{ github.repository }}/api
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com/${{ github.repository }}
+          repository: api
           path: api
           push: true
           tags: latest
@@ -26,10 +23,10 @@ jobs:
 
       - uses: docker/build-push-action@master
         with:
-          username: $DOCKER_USERNAME
-          password: $DOCKER_PASSWORD
-          registry: $DOCKER_REGISTRY
-          repository: ${{ github.repository }}/web
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com/${{ github.repository }}
+          repository: web
           path: web
           push: true
           tags: latest

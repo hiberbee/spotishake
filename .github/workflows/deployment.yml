@@ -11,6 +11,8 @@ jobs:
       - uses: mamezou-tech/setup-helmfile@v0.2.4
         with:
           helmfile-version: "v0.116.0"
+          helm-version: "v3.2.1"
+          kubectl-version: "v1.18.0"
       - run: |
           mkdir -p ~/.kube
           echo '${{ secrets.kubeconfig }}' >> ~/.kube/config
