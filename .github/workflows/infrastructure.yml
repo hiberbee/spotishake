@@ -3,7 +3,7 @@ on: [push]
 jobs:
   terraform-apply:
     env:
-      KUBECONFIG: $PWD/.kube/config
+      KUBECONFIG: $PWD/cloud/.kube/config
       TF_CLI_CONFIG_FILE: .terraformrc
       TF_VAR_digitalocean_api_token: ${{ secrets.digitalocean_api_token }}
     runs-on: ubuntu-latest

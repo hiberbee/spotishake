@@ -4,7 +4,7 @@ jobs:
   helm-deploy:
     runs-on: ubuntu-latest
     env:
-      KUBECONFIG: $PWD/.kube/config
+      KUBECONFIG: $PWD/cloud/.kube/config
     defaults:
       run:
         working-directory: cloud
