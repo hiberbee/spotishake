@@ -2,8 +2,8 @@ name: Infrastructure management
 on: [push]
 jobs:
   terraform-apply:
-    name: Terraform
     env:
+      KUBECONFIG: $PWD/.kube/config
       TF_CLI_CONFIG_FILE: .terraformrc
       TF_VAR_digitalocean_api_token: ${{ secrets.digitalocean_api_token }}
     runs-on: ubuntu-latest

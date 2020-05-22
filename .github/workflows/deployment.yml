@@ -4,7 +4,7 @@ jobs:
   helm-deploy:
     runs-on: ubuntu-latest
     env:
-      KUBECONFIG: .kube/config
+      KUBECONFIG: $PWD/.kube/config
     defaults:
       run:
         working-directory: cloud
@@ -13,7 +13,7 @@ jobs:
       - uses: mamezou-tech/setup-helmfile@v0.2.4
         with:
           helmfile-version: "v0.116.0"
-      - run: echo '${{ secrets.kubeconfig }}' >> $PWD/$KUBECONFIG
+      - run: echo '${{ secrets.kubeconfig }}' >> $KUBECONFIG
       - run: helmfile apply
         env:
           GRAFANA_ADMIN_PASSWORD: ${{ secrets.grafana_admin_password }}

@@ -44,9 +44,8 @@ resource "local_file" "kubeconfig" {
 }
 
 provider "kubernetes" {
-  load_config_file = true
-  config_context   = "do-${local.cluster_region}-${lower(local.name)}"
-  config_path      = "${path.cwd}/${local.kubeconfig}"
+  config_context = "do-${local.cluster_region}-${lower(local.name)}"
+  config_path    = "${path.cwd}/${local_file.kubeconfig.filename}"
 }
 
 module "ingress_dns" {
