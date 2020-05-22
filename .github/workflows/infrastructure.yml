@@ -16,5 +16,5 @@ jobs:
       - run: echo '${{ secrets.terraformrc }}' >> $TF_CLI_CONFIG_FILE
       - run: terraform init
       - run: terraform validate
-      - run: terraform plan
-      - run: terraform apply -auto-approve
+      - run: terraform plan -input=false
+      - run: terraform apply -input=false -auto-approve

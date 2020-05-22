@@ -2,10 +2,6 @@ variable "digitalocean_api_token" {
   type        = string
   description = "Create DigitalOcean token here: https://cloud.digitalocean.com/account/api/tokens"
 }
-variable "terraform_api_token" {
-  type        = string
-  description = "Create Terraform token here: https://cloud.digitalocean.com/account/api/tokens"
-}
 
 terraform {
   required_version = ">= 0.12.20"
