@@ -14,11 +14,12 @@ terraform {
 }
 
 locals {
-  name        = "SpotiShake"
-  description = "Spotify playlist manager with random shuffling, duplicate tracking and revision history."
-  domain      = "spotishake.me"
-  kubeconfig  = ".kube/config"
-  tags        = [
+  name           = "SpotiShake"
+  description    = "Spotify playlist manager with random shuffling, duplicate tracking and revision history."
+  domain         = "spotishake.me"
+  cluster_region = "fra1"
+  kubeconfig     = ".kube/config"
+  tags           = [
     "staging",
     "production"
   ]
@@ -31,6 +32,7 @@ provider "digitalocean" {
 module "kubernetes_provisioner" {
   source              = "./modules/digitalocean"
   project_name        = local.name
+  region              = local.cluster_region
   project_description = local.description
   project_domain      = local.domain
   cloud_tags          = local.tags
@@ -43,7 +45,8 @@ resource "local_file" "kubeconfig" {
 
 provider "kubernetes" {
   load_config_file = true
-  config_path      = local.kubeconfig
+  config_context   = "do-${local.cluster_region}-${lower(local.name)}"
+  config_path      = "${path.cwd}/${local.kubeconfig}"
 }
 
 module "ingress_dns" {
