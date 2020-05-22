@@ -1,17 +1,18 @@
 name: Docker images
 on: [push]
 jobs:
-  build:
-    name: Docker
+  docker-build:
     runs-on: ubuntu-latest
     env:
       DOCKER_REGISTRY: docker.pkg.github.com/${{ github.repository }}
       DOCKER_USERNAME: ${{ github.actor }}
       DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN  }}
+      DOCKER_BUILDKIT: 1
       NODE_ENV: production
       REACT_APP_PUBLIC_URL: https://api.spotishake.me/graphql
     steps:
       - uses: actions/checkout@v2
+
       - uses: docker/build-push-action@master
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -21,6 +22,8 @@ jobs:
           path: api
           push: true
           tags: latest
+          build_args: apiUrl=$REACT_APP_PUBLIC_URL env=$NODE_ENV
+
       - uses: docker/build-push-action@master
         with:
           username: ${{ secrets.DOCKER_USERNAME }}

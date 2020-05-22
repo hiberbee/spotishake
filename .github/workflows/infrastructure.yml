@@ -1,7 +1,7 @@
 name: Infrastructure management
 on: [push]
 jobs:
-  setup:
+  terraform-apply:
     name: Terraform
     env:
       TF_CLI_CONFIG_FILE: .terraformrc

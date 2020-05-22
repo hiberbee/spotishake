@@ -1,8 +1,7 @@
 name: Application deployments
 on: [push]
 jobs:
-  deploy:
-    name: Helm
+  helm-deploy:
     runs-on: ubuntu-latest
     env:
       KUBECONFIG: .kube/config
