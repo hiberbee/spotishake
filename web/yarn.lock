@@ -40,25 +40,25 @@
     lodash "^4.17.15"
     resize-observer-polyfill "^1.5.0"
 
-"@apollo/client@^3.0.0-beta.24":
-  version "3.0.0-beta.49"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.0-beta.49.tgz#2f3cd94514a2c2fbdaa937fc7bb73b83476d2abc"
-  integrity sha512-VhgQbsbMSjVLetckWArRXuHX7S6099aQM0M8ckzjbRUdIgSsliKInjnctuT+VDTJyFrZc//xm31djtZAaqiYyA==
+"@apollo/client@3.0.0-beta.39":
+  version "3.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.0-beta.39.tgz#f43cd42ab6c3611f6990df72d59e4f6581ab0014"
+  integrity sha512-c1lBTGxss9KWkSYVADgP0K3nzbV7eh2A69X+WNySTnm9Ml34+4E+QsRdZbX98r////nan93iJd7mKjCTXmirLQ==
   dependencies:
     "@types/zen-observable" "^0.8.0"
     "@wry/equality" "^0.1.9"
     fast-json-stable-stringify "^2.0.0"
     graphql-tag "^2.10.2"
-    optimism "^0.12.1"
+    optimism "^0.11.5"
     symbol-observable "^1.2.0"
     ts-invariant "^0.4.4"
     tslib "^1.10.0"
     zen-observable "^0.8.14"
 
-"@apollo/client@^3.0.0-beta.50":
-  version "3.0.0-beta.50"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.0-beta.50.tgz#1b1de6e9d2380fda344f75cd3d80a9fdd0589fb1"
-  integrity sha512-sjLd+d0bVPnmlR5UYQ0LNamVcdCPSgRB6gyt1IByIfp5Q8qPlpM0uZiMQerhSQrfuDVhgQoLnfv13S3/CoJhUQ==
+"@apollo/client@^3.0.0-beta.24":
+  version "3.0.0-beta.49"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.0-beta.49.tgz#2f3cd94514a2c2fbdaa937fc7bb73b83476d2abc"
+  integrity sha512-VhgQbsbMSjVLetckWArRXuHX7S6099aQM0M8ckzjbRUdIgSsliKInjnctuT+VDTJyFrZc//xm31djtZAaqiYyA==
   dependencies:
     "@types/zen-observable" "^0.8.0"
     "@wry/equality" "^0.1.9"
@@ -2041,12 +2041,12 @@
     regexpp "^3.0.0"
     tsutils "^3.17.1"
 
-"@typescript-eslint/eslint-plugin@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-3.0.0.tgz#02f8ec6b5ce814bda80dfc22463f108bed1f699b"
-  integrity sha512-lcZ0M6jD4cqGccYOERKdMtg+VWpoq3NSnWVxpc/AwAy0zhkUYVioOUZmfNqiNH8/eBNGhCn6HXd6mKIGRgNc1Q==
+"@typescript-eslint/eslint-plugin@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-3.0.1.tgz#368fe7d4c3d927e9fd27b7ba150b4b7e83ddfabe"
+  integrity sha512-RxGldRQD3hgOK2xtBfNfA5MMV3rn5gVChe+MIf14hKm51jO2urqF64xOyVrGtzThkrd4rS1Kihqx2nkSxkXHvA==
   dependencies:
-    "@typescript-eslint/experimental-utils" "3.0.0"
+    "@typescript-eslint/experimental-utils" "3.0.1"
     functional-red-black-tree "^1.0.1"
     regexpp "^3.0.0"
     semver "^7.3.2"
@@ -2069,6 +2069,16 @@
   dependencies:
     "@types/json-schema" "^7.0.3"
     "@typescript-eslint/typescript-estree" "3.0.0"
+    eslint-scope "^5.0.0"
+    eslint-utils "^2.0.0"
+
+"@typescript-eslint/experimental-utils@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-3.0.1.tgz#e2721c970068fabd6621709234809c98cd3343ad"
+  integrity sha512-GdwOVz80MOWxbc/br1DC30eeqlxfpVzexHgHtf3L0hcbOu1xAs1wSCNcaBTLMOMZbh1gj/cKZt0eB207FxWfFA==
+  dependencies:
+    "@types/json-schema" "^7.0.3"
+    "@typescript-eslint/typescript-estree" "3.0.1"
     eslint-scope "^5.0.0"
     eslint-utils "^2.0.0"
 
@@ -2109,6 +2119,19 @@
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-3.0.0.tgz#fa40e1b76ccff880130be054d9c398e96004bf42"
   integrity sha512-nevQvHyNghsfLrrByzVIH4ZG3NROgJ8LZlfh3ddwPPH4CH7W4GAiSx5qu+xHuX5pWsq6q/eqMc1io840ZhAnUg==
+  dependencies:
+    debug "^4.1.1"
+    eslint-visitor-keys "^1.1.0"
+    glob "^7.1.6"
+    is-glob "^4.0.1"
+    lodash "^4.17.15"
+    semver "^7.3.2"
+    tsutils "^3.17.1"
+
+"@typescript-eslint/typescript-estree@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-3.0.1.tgz#8c0cfb7cda64bd6f54185a7b7d1923d25d36b2a8"
+  integrity sha512-FrbMdgVCeIGHKaP9OYTttFTlF8Ds7AkjMca2GzYCE7pVch10PAJc1mmAFt+DfQPgu/2TrLAprg2vI0PK/WTdcg==
   dependencies:
     debug "^4.1.1"
     eslint-visitor-keys "^1.1.0"
@@ -2264,7 +2287,7 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@wry/context@^0.5.2":
+"@wry/context@^0.5.0", "@wry/context@^0.5.2":
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/@wry/context/-/context-0.5.2.tgz#f2a5d5ab9227343aa74c81e06533c1ef84598ec7"
   integrity sha512-B/JLuRZ/vbEKHRUiGj6xiMojST1kHhu4WcreLfNN7q9DqQFrb97cWgf/kiYsPSUCAMVN0HzfFc8XjJdzgZzfjw==
@@ -8801,6 +8824,13 @@ opn@^5.5.0:
   integrity sha512-PqHpggC9bLV0VeWcdKhkpxY+3JTzetLSqTCWL/z/tFIbI6G8JCjondXklT1JinczLz2Xib62sSp0T/gKT4KksA==
   dependencies:
     is-wsl "^1.1.0"
+
+optimism@^0.11.5:
+  version "0.11.5"
+  resolved "https://registry.yarnpkg.com/optimism/-/optimism-0.11.5.tgz#4c5d45fa0fa1cc9dcf092729b5d6d661b53ff5c9"
+  integrity sha512-twCHmBb64DYzEZ8A3O+TLCuF/RmZPBhXPQYv4agoiALRLlW9SidMzd7lwUP9mL0jOZhzhnBmb8ajqA00ECo/7g==
+  dependencies:
+    "@wry/context" "^0.5.0"
 
 optimism@^0.12.1:
   version "0.12.1"
