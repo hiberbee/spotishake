@@ -6,7 +6,7 @@
     "@apollo/federation": "^0.16.0",
     "apollo-server": "^2.13.1",
     "apollo-server-caching": "^0.5.1",
-    "graphql-faker": "^2.0.0-rc.17",
+    "graphql-faker": "^2.0.0-rc.19",
     "graphql": "^15.0.0",
     "nodemon": "^2.0.4",
     "ts-node": "^8.10.1",
