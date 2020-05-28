@@ -3,7 +3,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@apollo/federation": "^0.16.0",
+    "@apollo/federation": "^0.16.1",
     "apollo-server": "^2.13.1",
     "apollo-server-caching": "^0.5.1",
     "graphql-faker": "^2.0.0-rc.17",
