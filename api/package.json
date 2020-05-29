@@ -9,7 +9,7 @@
     "graphql-faker": "^2.0.0-rc.17",
     "graphql": "^15.0.0",
     "nodemon": "^2.0.4",
-    "ts-node": "^8.10.1",
+    "ts-node": "^8.10.2",
     "@types/node": "^14.0.5",
     "@types/isomorphic-fetch": "^0.0.35",
     "typescript": "^3.9.3"
