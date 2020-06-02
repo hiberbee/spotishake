@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
+    <file url="file:////wsl$/Ubuntu/usr/local/src/spotishake.me/api" libraries="{spotishake.me/api/node_modules}" />
+    <file url="file://$PROJECT_DIR$/api" libraries="{spotishake.me/api/node_modules}" />
     <file url="file://$PROJECT_DIR$/web" libraries="{HTML}" />
-    <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>

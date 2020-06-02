@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="WSL" uploadOnCheckin="0e086033-ab20-41f4-84dc-277abf7b3a3f">
-    <serverData>
-      <paths name="WSL">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/spotishake.me" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-    </serverData>
+  <component name="PublishConfigData" uploadOnCheckin="0e086033-ab20-41f4-84dc-277abf7b3a3f">
     <option name="myUploadOnCheckinName" value="WSL" />
-    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

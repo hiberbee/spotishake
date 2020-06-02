@@ -7,7 +7,7 @@ type Playlist {
   description: String
   externalUrls: [ExternalUrl]!
   href: String
-  id: ID!
+  id: ID! @fake(type: uuid)
   images: [Image]!
   isCollaborative: Boolean!
   isPublicAccess: Boolean!
@@ -27,7 +27,7 @@ type Track {
   externalIds: [ExternalId]
   externalUrls: ExternalUrl
   href: String
-  id: String
+  id: ID! @fake(type: uuid)
   isExplicit: Boolean
   isPlayable: Boolean
   name: String! @fake(type: words)
@@ -41,7 +41,7 @@ type Artist {
   externalUrls: [ExternalUrl]!
   genres: [String]!
   href: String!
-  id: ID!
+  id: ID! @fake(type: uuid)
   images: [Image]!
   name: String!
   popularity: Int
@@ -56,7 +56,7 @@ type Album {
   externalUrls: ExternalUrl
   genres: [String]
   href: String
-  id: String
+  id: ID! @fake(type: uuid)
   images: [Image]
   label: String
   name: String
@@ -75,7 +75,7 @@ type User {
   email: String
   externalUrls: ExternalUrl
   href: String
-  id: ID!
+  id: ID! @fake(type: uuid)
   images: [Image]
   product: ProductType
   type: ModelObjectType
@@ -83,7 +83,8 @@ type User {
 }
 
 type Image {
-  uri: ID!
+  id: ID! @fake(type: uuid)
+  uri: String!
   height: Int!
   width: Int!
 }
