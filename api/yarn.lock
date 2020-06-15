@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@apollo/federation@^0.16.2":
-  version "0.16.2"
-  resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.16.2.tgz#a6e100e6d89306559023012ed0084a9cc5011dbf"
-  integrity sha512-pjTkcl1KGxLZOPpVyTygZNuLxZJCCMvGVonPJMoFzQYt63/o0DwpwbcNlbvpdryWjjFgvi5diqJxRFGuxndEPA==
+"@apollo/federation@^0.16.6":
+  version "0.16.6"
+  resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.16.6.tgz#2d807b9f3f63533d8c773ffd9b458a0542390289"
+  integrity sha512-moNXaJLdYpCuMPA1WpUlILId34t4N/zSGzEaMx2t9kMqEV3DhNfEFXFZDjPnlYifiq/Q+AtO5BuItvuh/m7hMQ==
   dependencies:
     apollo-graphql "^0.4.0"
     apollo-server-env "^2.4.4"
