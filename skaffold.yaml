@@ -4,9 +4,9 @@ metadata:
   name: spotishake
 build:
   artifacts:
-    - image: spotishake/web
+    - image: web
       context: web
-    - image: spotishake/api
+    - image: api
       context: api
   tagPolicy:
     sha256: {}
@@ -17,11 +17,11 @@ build:
 deploy:
   helm:
     releases:
-      - name: spotishake-web
+      - name: web
         chartPath: web
         artifactOverrides:
           image: spotishake/web
-      - name: spotishake-api
+      - name: api
         chartPath: api
         artifactOverrides:
           image: spotishake/api
@@ -32,7 +32,7 @@ profiles:
     build:
       tagPolicy:
         envTemplate:
-          template: "docker.pkg.github.com/hiberbee/{{ .IMAGE_NAME }}:latest"
+          template: "{{ .IMAGE_NAME }}:1.0.0"
       local:
         push: true
         useBuildkit: true

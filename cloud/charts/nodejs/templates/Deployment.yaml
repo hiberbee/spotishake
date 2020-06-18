@@ -8,7 +8,7 @@ spec: {{ if not .Values.autoscaling.enabled }}
   selector:
     matchLabels: {{ include "nodejs.selectorLabels" . | nindent 6 }}
   template:
-    metadata: {{with .Values.podAnnotations }}
+    metadata: {{ with .Values.podAnnotations }}
       annotations: {{ toYaml . | nindent 8 }} {{ end }}
       labels: {{ include "nodejs.selectorLabels" . | nindent 8 }}
     spec: {{ with .Values.imagePullSecrets }}
