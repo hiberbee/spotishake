@@ -23,10 +23,12 @@ jobs:
       - name: Apply plans
         run: terraform apply -var digitalocean_api_token=${{ secrets.DIGITALOCEAN_API_TOKEN }} -input=false -auto-approve
       - name: Copy kube config
-        run: cp -rf .kube ~/.kube
+        run: cp -rf .kube /github/home/.kube
   helm:
     name: Deploy Helm charts
     runs-on: ubuntu-20.04
+    env:
+      KUBECONFIG: /github/home/.kube/config
     needs:
       - terraform
     steps:
