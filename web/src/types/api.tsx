@@ -5,6 +5,7 @@ import * as ApolloReactComponents from '@apollo/react-components'
 import * as ApolloReactHoc from '@apollo/react-hoc'
 import * as ApolloReactHooks from '@apollo/react-hooks'
 export type Maybe<T> = T
+export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] }
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -22,7 +23,12 @@ export type Scalars = {
 export interface Query {
   __typename?: 'Query'
   playlists: Array<Maybe<Playlist>>
+  me?: Maybe<User>
   playlist?: Maybe<Playlist>
+}
+
+export type QueryMeArgs = {
+  code: Scalars['String']
 }
 
 export type QueryPlaylistArgs = {
@@ -38,7 +44,7 @@ export interface Playlist {
   images: Array<Maybe<Image>>
   isCollaborative: Scalars['Boolean']
   isPublicAccess: Scalars['Boolean']
-  name?: Maybe<Scalars['String']>
+  name: Scalars['String']
   owner?: Maybe<User>
   snapshotId?: Maybe<Scalars['String']>
   tracks: Array<Maybe<Track>>
@@ -47,7 +53,8 @@ export interface Playlist {
 
 export interface Image {
   __typename?: 'Image'
-  uri: Scalars['ID']
+  id: Scalars['ID']
+  uri: Scalars['String']
   height: Scalars['Int']
   width: Scalars['Int']
 }
@@ -57,7 +64,7 @@ export interface User {
   birthdate?: Maybe<Scalars['String']>
   country?: Maybe<CountryCode>
   displayName?: Maybe<Scalars['String']>
-  email?: Maybe<Scalars['String']>
+  email: Scalars['String']
   externalUrls?: Maybe<Scalars['ExternalUrl']>
   href?: Maybe<Scalars['String']>
   id: Scalars['ID']
@@ -370,10 +377,10 @@ export interface Track {
   externalIds?: Maybe<Array<Maybe<Scalars['ExternalId']>>>
   externalUrls?: Maybe<Scalars['ExternalUrl']>
   href?: Maybe<Scalars['String']>
-  id?: Maybe<Scalars['String']>
-  isExplicit?: Maybe<Scalars['Boolean']>
-  isPlayable?: Maybe<Scalars['Boolean']>
-  name?: Maybe<Scalars['String']>
+  id: Scalars['ID']
+  isExplicit: Scalars['Boolean']
+  isPlayable: Scalars['Boolean']
+  name: Scalars['String']
   popularity?: Maybe<Scalars['Int']>
   previewUrl?: Maybe<Scalars['String']>
   trackNumber?: Maybe<Scalars['Int']>
@@ -389,7 +396,7 @@ export interface Album {
   externalUrls?: Maybe<Scalars['ExternalUrl']>
   genres?: Maybe<Array<Maybe<Scalars['String']>>>
   href?: Maybe<Scalars['String']>
-  id?: Maybe<Scalars['String']>
+  id: Scalars['ID']
   images?: Maybe<Array<Maybe<Image>>>
   label?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
@@ -505,6 +512,11 @@ export enum FakeTypes {
   dbType = 'dbType',
   dbCollation = 'dbCollation',
   dbEngine = 'dbEngine',
+  /**
+   * By default returns dates beetween 2000-01-01 and 2030-01-01.
+   * Configure date format with options `dateFormat` `dateFrom` `dateTo`.
+   */
+  date = 'date',
   /** Configure date format with option `dateFormat` */
   pastDate = 'pastDate',
   /** Configure date format with option `dateFormat` */
@@ -519,7 +531,7 @@ export enum FakeTypes {
   bitcoinAddress = 'bitcoinAddress',
   internationalBankAccountNumber = 'internationalBankAccountNumber',
   bankIdentifierCode = 'bankIdentifierCode',
-  hackerAbbr = 'hackerAbbr',
+  hackerAbbreviation = 'hackerAbbreviation',
   hackerPhrase = 'hackerPhrase',
   /** An image url. Configure image with options: `imageCategory`, `imageWidth`, `imageHeight` and `randomizeImageUrl` */
   imageUrl = 'imageUrl',
@@ -555,20 +567,9 @@ export enum FakeTypes {
   semver = 'semver',
 }
 
-export enum FakeImageCategory {
-  abstract = 'abstract',
-  animals = 'animals',
-  business = 'business',
-  cats = 'cats',
-  city = 'city',
-  food = 'food',
-  nightlife = 'nightlife',
-  fashion = 'fashion',
-  people = 'people',
-  nature = 'nature',
-  sports = 'sports',
-  technics = 'technics',
-  transport = 'transport',
+export interface FakeImageSize {
+  width: Scalars['Int']
+  height: Scalars['Int']
 }
 
 export enum FakeLoremSize {
@@ -596,11 +597,9 @@ export interface FakeOptions {
   /** Only for type `money` */
   decimalPlaces?: Maybe<Scalars['Int']>
   /** Only for type `imageUrl` */
-  imageWidth?: Maybe<Scalars['Int']>
-  /** Only for type `imageUrl` */
-  imageHeight?: Maybe<Scalars['Int']>
-  /** Only for type `imageUrl` */
-  imageCategory?: Maybe<FakeImageCategory>
+  imageSize?: Maybe<FakeImageSize>
+  /** Only for type `imageUrl`. Example value: `["nature", "water"]`. */
+  imageKeywords?: Maybe<Array<Scalars['String']>>
   /** Only for type `imageUrl` */
   randomizeImageUrl?: Maybe<Scalars['Boolean']>
   /** Only for type `email` */
@@ -611,6 +610,10 @@ export interface FakeOptions {
   loremSize?: Maybe<FakeLoremSize>
   /** Only for types `*Date`. Example value: `YYYY MM DD`. [Full Specification](http://momentjs.com/docs/#/displaying/format/) */
   dateFormat?: Maybe<Scalars['String']>
+  /** Only for types `betweenDate`. Example value: `1986-11-02`. */
+  dateFrom?: Maybe<Scalars['String']>
+  /** Only for types `betweenDate`. Example value: `2038-01-19`. */
+  dateTo?: Maybe<Scalars['String']>
   /** Only for type `colorHex`. [Details here](https://stackoverflow.com/a/43235/4989887) */
   baseColor?: Maybe<FakeColor>
   /** Only for type `number` */
@@ -621,24 +624,42 @@ export interface FakeOptions {
   precisionNumber?: Maybe<Scalars['Float']>
 }
 
-export type PlaylistQueryVariables = {
-  id: Scalars['ID']
+export type MeQueryVariables = Exact<{
+  code: Scalars['String']
+}>
+
+export type MeQuery = {
+  __typename?: 'Query'
+  me?: Maybe<{ __typename?: 'User'; id: string; email: string; displayName?: Maybe<string> }>
 }
+
+export type PlaylistQueryVariables = Exact<{
+  id: Scalars['ID']
+}>
 
 export type PlaylistQuery = {
   __typename?: 'Query'
   playlist?: Maybe<{
     __typename?: 'Playlist'
     id: string
-    name?: Maybe<string>
+    name: string
     description?: Maybe<string>
     isCollaborative: boolean
     isPublicAccess: boolean
-    tracks: Array<Maybe<{ __typename?: 'Track'; id?: Maybe<string>; name?: Maybe<string> }>>
+    tracks: Array<
+      Maybe<{
+        __typename?: 'Track'
+        id: string
+        name: string
+        popularity?: Maybe<number>
+        isExplicit: boolean
+        isPlayable: boolean
+      }>
+    >
   }>
 }
 
-export type PlaylistsQueryVariables = {}
+export type PlaylistsQueryVariables = Exact<{ [key: string]: never }>
 
 export type PlaylistsQuery = {
   __typename?: 'Query'
@@ -646,7 +667,7 @@ export type PlaylistsQuery = {
     Maybe<{
       __typename?: 'Playlist'
       id: string
-      name?: Maybe<string>
+      name: string
       description?: Maybe<string>
       isCollaborative: boolean
       isPublicAccess: boolean
@@ -667,8 +688,82 @@ export const TrackFragmentFragmentDoc = gql`
   fragment TrackFragment on Track {
     id
     name
+    popularity
+    isExplicit
+    isPlayable
   }
 `
+export const MeDocument = gql`
+  query Me($code: String!) {
+    me(code: $code) {
+      id
+      email
+      displayName
+    }
+  }
+`
+export type MeComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<MeQuery, MeQueryVariables>,
+  'query'
+> &
+  ({ variables: MeQueryVariables; skip?: boolean } | { skip: boolean })
+
+export const MeComponent = (props: MeComponentProps) => (
+  <ApolloReactComponents.Query<MeQuery, MeQueryVariables> query={MeDocument} {...props} />
+)
+
+export type MeProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<MeQuery, MeQueryVariables>
+} &
+  TChildProps
+export function withMe<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    MeQuery,
+    MeQueryVariables,
+    MeProps<TChildProps, TDataName>
+  >,
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    MeQuery,
+    MeQueryVariables,
+    MeProps<TChildProps, TDataName>
+  >(MeDocument, {
+    alias: 'me',
+    ...operationOptions,
+  })
+}
+
+/**
+ * __useMeQuery__
+ *
+ * To run a query within a React component, call `useMeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMeQuery({
+ *   variables: {
+ *      code: // value for 'code'
+ *   },
+ * });
+ */
+export function useMeQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<MeQuery, MeQueryVariables>,
+) {
+  return ApolloReactHooks.useQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions)
+}
+export function useMeLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<MeQuery, MeQueryVariables>,
+) {
+  return ApolloReactHooks.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions)
+}
+export type MeQueryHookResult = ReturnType<typeof useMeQuery>
+export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>
+export type MeQueryResult = ApolloReactCommon.QueryResult<MeQuery, MeQueryVariables>
 export const PlaylistDocument = gql`
   query Playlist($id: ID!) {
     playlist(id: $id) {

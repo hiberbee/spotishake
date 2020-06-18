@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "allowJs": true,
+    "allowJs": false,
     "alwaysStrict": true,
-    "baseUrl": "",
+    "baseUrl": ".",
     "outDir": "build",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -19,7 +19,7 @@
     ],
     "noImplicitAny": false,
     "noImplicitThis": true,
-    "resolveJsonModule": true,
+    "resolveJsonModule": false,
     "sourceMap": true,
     "strict": true,
     "strictNullChecks": true,

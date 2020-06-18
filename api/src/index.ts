@@ -4,7 +4,7 @@ import { buildFederatedSchema } from '@apollo/federation'
 
 const cache = new InMemoryLRUCache()
 
-const port = process.env.NODE_PORT ?? 8080
+const port = process.env.NODE_PORT ?? 8000
 
 const typeDefs = gql`
   type Query {
@@ -20,7 +20,7 @@ const resolvers = {
 
 const apolloServer = new ApolloServer({
   engine: {
-    apiKey: process.env.APOLLO_ENGINE_KEY,
+    apiKey: process.env.ENGINE_API_KEY,
     schemaTag: process.env.NODE_ENV,
   },
   cache,
@@ -32,4 +32,4 @@ const apolloServer = new ApolloServer({
   schema: buildFederatedSchema([{ typeDefs, resolvers }]),
 })
 
-apolloServer.listen(port).then(value => console.log(`Apollo Gateway started on ${value.url}`))
+apolloServer.listen(port).then(info => console.log(`🚀 Apollo Gateway is running ${info.url}`))

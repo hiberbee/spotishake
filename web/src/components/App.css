@@ -1,24 +1,44 @@
 @import '~antd/dist/antd.min.css';
 
 .ant-menu-item a {
-    color: #fff !important;
-    font-weight: 700;
-    text-transform: uppercase;
+  color: #fff !important;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .ant-layout-header, .ant-layout-sider, .ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark {
-    background: #000;
+  background: #000;
 }
+
+.logo {
+  background-image: url('./../assets/logo.png');
+  background-size: cover;
+  height: 60px;
+  width: 250px;
+}
+
+.ant-page-header-heading-title {
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.site-layout-sub-header-background {
+  padding: 0;
+  height: 64px;
+}
+
 h1.ant-typography {
-    font-weight: 900;
+  font-weight: 900;
 }
+
 body {
-    margin: 0;
-    font-family: -apple-system, proxima-nova, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: -apple-system, proxima-nova, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Fira Code', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Fira Code', monospace;
 }

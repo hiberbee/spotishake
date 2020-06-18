@@ -1,7 +1,7 @@
 *.log
 build
-node_modules/
+node_modules
 .eslintcache
 .env*
-# public
+public
 templates
