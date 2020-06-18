@@ -22,13 +22,13 @@ jobs:
         run: terraform plan -var digitalocean_api_token=${{ secrets.DIGITALOCEAN_API_TOKEN }} -input=false -no-color
       - name: Apply plans
         run: terraform apply -var digitalocean_api_token=${{ secrets.DIGITALOCEAN_API_TOKEN }} -input=false -auto-approve
+      - name: Copy kube config
+        run: cp -rf .kube ~/.kube
   helm:
     name: Deploy Helm charts
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs:
       - terraform
-    env:
-      KUBECONFIG: ${{ github.workspace }}/cloud/.kube/config
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
