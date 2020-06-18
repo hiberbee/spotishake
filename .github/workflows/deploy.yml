@@ -22,13 +22,9 @@ jobs:
         run: terraform plan -var digitalocean_api_token=${{ secrets.DIGITALOCEAN_API_TOKEN }} -input=false -no-color
       - name: Apply plans
         run: terraform apply -var digitalocean_api_token=${{ secrets.DIGITALOCEAN_API_TOKEN }} -input=false -auto-approve
-      - name: Copy kube config
-        run: cp -rf .kube /github/home/.kube
   helm:
     name: Deploy Helm charts
     runs-on: ubuntu-20.04
-    env:
-      KUBECONFIG: /github/home/.kube/config
     needs:
       - terraform
     steps:
@@ -40,6 +36,10 @@ jobs:
           helmfile-version: v0.119.0
           helm-version: v3.2.4
           kubectl-version: v1.18.2
+      - name: Create kubeconfig
+        run: |
+          mkdir -p ~/.kube
+          echo ${{ secrets.KUBECONFIG }} >> ~/.kube/config
       - name: Create Kubernetes CRDs
         run: helm upgrade --install --cleanup-on-fail --atomic crds charts/crds
       - name: Deploy Helm charts
