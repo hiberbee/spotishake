@@ -39,7 +39,7 @@ jobs:
       - name: Create kubeconfig
         run: |
           mkdir -p ~/.kube
-          echo ${{ secrets.KUBECONFIG }} >> ~/.kube/config
+          echo '${{ secrets.KUBECONFIG }}' >> ~/.kube/config
       - name: Create Kubernetes CRDs
         run: helm upgrade --install --cleanup-on-fail --atomic crds charts/crds
       - name: Deploy Helm charts
