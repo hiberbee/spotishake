@@ -31,8 +31,6 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - terraform
-      - api-image
-      - web-image
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -47,6 +45,6 @@ jobs:
       - name: Deploy Helm charts
         run: helmfile apply
         env:
-          DOCKER_USERNAME: ${{ github.actor }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           GRAFANA_ADMIN_PASSWORD: ${{ secrets.GRAFANA_ADMIN_PASSWORD }}

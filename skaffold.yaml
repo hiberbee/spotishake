@@ -1,25 +1,38 @@
-apiVersion: skaffold/v2alpha4
+apiVersion: skaffold/v2beta5
 kind: Config
+metadata:
+  name: spotishake
 build:
-  local:
-    push: false
-    concurrency: 0
-    useBuildkit: true
+  artifacts:
+    - image: spotishake/web
+      context: web
+    - image: spotishake/api
+      context: api
   tagPolicy:
     sha256: {}
-  artifacts:
-  - image: spotishake/web
-    context: web
-  - image: spotishake/api
-    context: api
+  local:
+    push: false
+    useBuildkit: true
+    concurrency: 0
 deploy:
   helm:
     releases:
-    - name: spotishake-web
-      chartPath: web
-      values:
-        image: spotishake/web
-    - name: spotishake-api
-      chartPath: api
-      values:
-        image: spotishake/api
+      - name: spotishake-web
+        chartPath: web
+        artifactOverrides:
+          image: spotishake/web
+      - name: spotishake-api
+        chartPath: api
+        artifactOverrides:
+          image: spotishake/api
+profiles:
+  - name: ci
+    activation:
+      - env: CI=true
+    build:
+      tagPolicy:
+        envTemplate:
+          template: "docker.pkg.github.com/hiberbee/{{ .IMAGE_NAME }}:latest"
+      local:
+        push: true
+        useBuildkit: true
