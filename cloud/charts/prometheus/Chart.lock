@@ -1,12 +1,12 @@
 dependencies:
 - name: prometheus-operator
   repository: https://kubernetes-charts.storage.googleapis.com
-  version: 8.14.0
+  version: 8.15.5
 - name: metrics-server
   repository: https://kubernetes-charts.storage.googleapis.com
   version: 2.11.1
 - name: prometheus-adapter
   repository: https://kubernetes-charts.storage.googleapis.com
-  version: 2.3.1
-digest: sha256:a6590b99ec0e36a41c42b4fea9fdb956e1db0dbf72bea22fb22a9853325b8737
-generated: "2020-06-10T11:39:42.7960791+03:00"
+  version: 2.4.0
+digest: sha256:8524827acccde4db654155cfe2cccbceea3995845cdf2e3d6e947b386be69455
+generated: "2020-06-18T07:40:32.3992851+03:00"
