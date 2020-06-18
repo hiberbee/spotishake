@@ -1,20 +1,20 @@
 ARG nodeVersion=14
-FROM node:${nodeVersion}-alpine AS runtime
+FROM node:${nodeVersion}-alpine AS node-base
+
+FROM node-base AS build
+WORKDIR /usr/local/src
 ARG env=production
 ARG apolloEngineKey=""
 ENV NODE_ENV=${env} \
-    APOLLO_ENGINE_KEY=${apolloEngineKey}
-ONBUILD WORKDIR /usr/local/src
-ONBUILD COPY package.json yarn.lock ./
-
-FROM runtime
-ARG port=4000
-ARG apiUrl=http://spotishake-api/graphql
-ENV PORT=${port} \
-    REACT_APP_API_URL=${apiUrl}
-EXPOSE 4000
-RUN yarn
+    ENGINE_API_KEY=${apolloEngineKey}
+COPY package.json yarn.lock ./
+RUN yarn install
 COPY . .
 RUN yarn build
+
+FROM node-base
+WORKDIR /usr/local/src
+COPY --from=build /usr/local/src .
+EXPOSE 4000 8000
 ENTRYPOINT ["yarn"]
-CMD ["start"]
+CMD ["fake"]

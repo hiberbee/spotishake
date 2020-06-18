@@ -6,13 +6,3 @@ cert-manager:
     defaultIssuerGroup: cert-manager.io
   prometheus:
     enabled: true
-
-dnsProvider:
-  name: digitalocean
-  secret:
-    key: api-token
-    value: ""
-
-acme:
-  url: https://acme-v02.api.letsencrypt.org/directory
-  email: admin@spotishake.me

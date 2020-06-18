@@ -1,13 +1,14 @@
 prometheus-operator:
+  kubeTargetVersionOverride: v1.17.5
   prometheusOperator:
-    createCustomResource: true
+    createCustomResource: false
   prometheus:
     service:
       port: 9090
   grafana:
     ingress:
       tls:
-        - secretName: grafana-general-tls
+        - secretName: grafana-tls
           hosts: [grafana.spotishake.me]
       hosts: [grafana.spotishake.me]
       enabled: true

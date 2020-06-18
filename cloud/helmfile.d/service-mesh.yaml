@@ -12,8 +12,3 @@ releases:
   - name: cert-manager
     namespace: cert-manager
     chart: ../charts/cert-manager
-    values:
-      - dnsProvider:
-          secret:
-            value: {{ requiredEnv "DIGITALOCEAN_API_TOKEN" }}
-

@@ -2,3 +2,56 @@ helmDefaults:
   cleanupOnFail: true
   historyMax: 5
   kubeContext: do-fra1-spotishake
+
+releases:
+  - name: credentials
+    chart: ../charts/credentials
+    values:
+      - docker:
+          credentials:
+            username: {{ requiredEnv "DOCKER_USERNAME" }}
+            password: {{ requiredEnv "DOCKER_PASSWORD" }}
+      - dnsProvider:
+          secret:
+            value: {{ requiredEnv "DIGITALOCEAN_API_TOKEN" }}
+
+  - name: api
+    chart: ../charts/nodejs
+    values:
+      - image: docker.pkg.github.com/hiberbee/spotishake/api:latest
+      - imagePullPolicy: Always
+      - imagePullSecrets: github
+      - ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            kubernetes.io/tls-acme: "true"
+          hosts:
+            - host: api.spotishake.me
+              paths: ["/"]
+          tls:
+            - secretName: api-tls
+              hosts: [api.spotishake.me]
+      - service:
+          targetPort: 4000
+  - name: web
+    chart: ../charts/nodejs
+    values:
+      - image: docker.pkg.github.com/hiberbee/spotishake/web:latest
+      - imagePullPolicy: Always
+      - imagePullSecrets: github
+      - env:
+          API_URL: http://api-nodejs/graphql
+      - ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            kubernetes.io/tls-acme: "true"
+          hosts:
+            - host: spotishake.me
+              paths: ["/"]
+          tls:
+            - secretName: web-tls
+              hosts: [spotishake.me]
+      - service:
+          targetPort: 3000

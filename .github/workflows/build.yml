@@ -1,0 +1,48 @@
+name: Build artifacts
+on: [push]
+env:
+  DOCKER_BUILDKIT: 1
+  NODE_ENV: production
+  API_URL: https://api.spotishake.me/graphql
+jobs:
+  api-image:
+    name: Build api Docker image
+    runs-on: ubuntu-20.04
+    env:
+      ENGINE_API_KEY: ${{ secrets.APOLLO_ENGINE_KEY }}
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+      - name: Build Docker image
+        uses: docker/build-push-action@master
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: docker.pkg.github.com/hiberbee/spotishake
+          repository: api
+          path: api
+          push: true
+          tags: latest
+          build_args: apolloEngineKey=$APOLLO_ENGINE_KEY env=$NODE_ENV
+  web-image:
+    name: Build web Docker image
+    runs-on: ubuntu-20.04
+    env:
+      NODE_ENV: production
+      REACT_APP_API_URL: http://api-nodejs/graphql
+      REACT_APP_PUBLIC_URL: https://spotishake.me
+      REACT_APP_SPOTIFY_CLIENT_ID: ${{ secrets.spotifyClientId }}
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+      - name: Build Docker image
+        uses: docker/build-push-action@master
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: docker.pkg.github.com/hiberbee/spotishake
+          repository: web
+          path: web
+          push: true
+          tags: latest
+          build_args: apiUrl=$API_URL env=$NODE_ENV spotifyClientId=$SPOTIFY_CLIENT_ID

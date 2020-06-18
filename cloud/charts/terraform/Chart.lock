@@ -1,6 +1,0 @@
-dependencies:
-- name: terraform
-  repository: https://helm.releases.hashicorp.com
-  version: 0.1.3-alpha
-digest: sha256:c372c55c4597acb3344474a3dfa000c2b24f2a85a25ce9a11e5da064aeb5e722
-generated: "2020-05-22T04:05:11.2292028+03:00"
