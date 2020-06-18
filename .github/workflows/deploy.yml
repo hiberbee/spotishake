@@ -28,7 +28,7 @@ jobs:
     needs:
       - terraform
     env:
-      KUBECONFIG: $GITHUB_WORKSPACE/cloud/.kube/config
+      KUBECONFIG: ${{ github.workspace }}/cloud/.kube/config
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
