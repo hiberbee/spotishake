@@ -21,4 +21,4 @@ WORKDIR /usr/local/src
 COPY --from=build /usr/local/src/build .
 EXPOSE 3000
 ENTRYPOINT ["npx"]
-CMD ["serve", "-l", "3000"]
+CMD ["serve", "-s", ".", "-l", "3000"]
