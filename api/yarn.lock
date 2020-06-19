@@ -1842,10 +1842,10 @@ graphql-extensions@^0.12.2:
     apollo-server-env "^2.4.4"
     apollo-server-types "^0.5.0"
 
-graphql-faker@^2.0.0-rc.21:
-  version "2.0.0-rc.21"
-  resolved "https://registry.yarnpkg.com/graphql-faker/-/graphql-faker-2.0.0-rc.21.tgz#ebdaec8f5be64147fd7280f5bc51debb06de1bbb"
-  integrity sha512-EqoqMAhNsXCJGLGoCiOK19CE3m23R8JdCOfGBvx2WxJnhW7NqgxMxF+CCOxGII9QjBR3cn2PBZhAeGVbKNhxDg==
+graphql-faker@^2.0.0-rc.23:
+  version "2.0.0-rc.23"
+  resolved "https://registry.yarnpkg.com/graphql-faker/-/graphql-faker-2.0.0-rc.23.tgz#fe76fc2ee16b69763600651c1f30798c5a647703"
+  integrity sha512-UTD8sTP5CVsOaLQ+0L36n0vDjt1nooTrGIu27lwhS79Q4QZNRVP2SQe0mwUJ/e3GiFAJOyovHufZ8isiGEJq0Q==
   dependencies:
     body-parser "1.19.0"
     chalk "4.0.0"
