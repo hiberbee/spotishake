@@ -9,7 +9,7 @@
     "apollo-server": "^2.14.1",
     "apollo-server-caching": "^0.5.1",
     "graphql": "^15.0.0",
-    "graphql-faker": "^2.0.0-rc.21",
+    "graphql-faker": "^2.0.0-rc.23",
     "nodemon": "^2.0.4",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.3"
