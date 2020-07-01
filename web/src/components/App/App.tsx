@@ -1,17 +1,17 @@
-import React, { lazy, ReactElement, Suspense } from 'react'
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+import React, { lazy, ReactElement, Suspense, useCallback, useMemo } from 'react'
+import { ApolloClient, ApolloProvider, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { ConfigProvider, Result, Spin } from 'antd'
 
 import DefaultLayout from 'src/layouts/DefaultLayout'
-import 'src/components/App.css'
+import 'src/components/App/App.css'
 
-const IndexPage = lazy(() => import('../routes/IndexPage'))
-const ProfilePage = lazy(() => import('../routes/ProfilePage'))
-const CallbackPage = lazy(() => import('../routes/OAuth'))
-const PlaylistPage = lazy(() => import('../routes/Playlist'))
-const AboutPage = lazy(() => import('../routes/AboutPage'))
-const NotFoundPage = lazy(() => import('../routes/NotFoundPage'))
+const IndexPage = lazy(() => import('../../routes/IndexPage'))
+const ProfilePage = lazy(() => import('../../routes/ProfilePage'))
+const CallbackPage = lazy(() => import('../../routes/OAuth'))
+const PlaylistPage = lazy(() => import('../../routes/Playlist'))
+const AboutPage = lazy(() => import('../../routes/AboutPage'))
+const NotFoundPage = lazy(() => import('../../routes/NotFoundPage'))
 
 const scopes: Array<string> = [
   'user-read-private',
@@ -28,14 +28,23 @@ const spotifyRedirectUri = `https://accounts.spotify.com/authorize?response_type
   scopes.join(' '),
 )}&redirect_uri=${encodeURIComponent(`${publicUri}/oauth`)}`
 
-export default function App(): ReactElement {
-  const client = new ApolloClient({
-    cache: new InMemoryCache({
-      resultCaching: true,
-    }),
-    connectToDevTools: true,
-    uri: apiUri,
-  })
+export function App(): ReactElement {
+  const client = useMemo<ApolloClient<NormalizedCacheObject>>(
+    () =>
+      new ApolloClient({
+        cache: new InMemoryCache({
+          resultCaching: true,
+        }),
+        connectToDevTools: true,
+        uri: apiUri,
+      }),
+    [],
+  )
+
+  const redirection = useCallback(() => {
+    window.location.href = spotifyRedirectUri
+    return null
+  }, [])
 
   return (
     <ConfigProvider>
@@ -48,14 +57,7 @@ export default function App(): ReactElement {
               <Switch>
                 <Route exact path="/" component={IndexPage} />
                 <Route path="/about" component={AboutPage} />
-                <Route
-                  exact
-                  path="/login"
-                  component={() => {
-                    window.location.href = spotifyRedirectUri
-                    return null
-                  }}
-                />
+                <Route exact path="/login" component={redirection} />
                 <Route path="/oauth" component={CallbackPage} />
                 <Route path="/profile" component={ProfilePage} />
                 <Route path="/playlists/:id" component={PlaylistPage} />

@@ -81,6 +81,7 @@ type User {
   product: ProductType
   type: ModelObjectType
   uri: String
+  playlists: [Playlist] @external
 }
 
 type Image {
