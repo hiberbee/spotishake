@@ -41,7 +41,7 @@ export function App(): ReactElement {
     [],
   )
 
-  const redirection = useCallback(() => {
+  const RedirectCallback = useCallback(() => {
     window.location.href = spotifyRedirectUri
     return null
   }, [])
@@ -57,7 +57,7 @@ export function App(): ReactElement {
               <Switch>
                 <Route exact path="/" component={IndexPage} />
                 <Route path="/about" component={AboutPage} />
-                <Route exact path="/login" component={redirection} />
+                <Route exact path="/login" component={RedirectCallback} />
                 <Route path="/oauth" component={CallbackPage} />
                 <Route path="/profile" component={ProfilePage} />
                 <Route path="/playlists/:id" component={PlaylistPage} />

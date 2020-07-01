@@ -14,7 +14,7 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    _app: (root, args, context) => 'SpotiShake',
+    _app: () => 'SpotiShake',
   },
 }
 
