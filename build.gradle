@@ -6,7 +6,8 @@ plugins {
 tasks {
   idea {
     module {
-      excludeDirs += files("gradle")
+      sourceDirs += files('api/src', 'web/src')
+      excludeDirs += files("gradle", ".gradle")
     }
   }
 }

@@ -1,5 +1,6 @@
 type Query {
   playlists: [Playlist]! @listLength(min: 5, max: 10)
+  me(code: String!): User
   playlist(id: ID!): Playlist
 }
 
@@ -28,10 +29,10 @@ type Track {
   externalUrls: ExternalUrl
   href: String
   id: ID! @fake(type: uuid)
-  isExplicit: Boolean
-  isPlayable: Boolean
+  isExplicit: Boolean!
+  isPlayable: Boolean!
   name: String! @fake(type: words)
-  popularity: Int
+  popularity: Int @fake(type:number)
   previewUrl: String
   trackNumber: Int
   uri: String
@@ -69,10 +70,10 @@ type Album {
 }
 
 type User {
-  birthdate: String
+  birthdate: Date @fake(type: pastDate)
   country: CountryCode
-  displayName: String
-  email: String
+  displayName: String @fake(type: fullName)
+  email: String! @fake(type: email)
   externalUrls: ExternalUrl
   href: String
   id: ID! @fake(type: uuid)
@@ -80,6 +81,7 @@ type User {
   product: ProductType
   type: ModelObjectType
   uri: String
+  playlists: [Playlist] @external
 }
 
 type Image {
@@ -407,5 +409,5 @@ enum ReleaseDatePrecision {
 }
 
 scalar ExternalUrl
-
+scalar Date
 scalar ExternalId

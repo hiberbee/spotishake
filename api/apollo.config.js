@@ -1,6 +1,6 @@
 module.exports = {
   service: {
-    name: 'Spotify-GraphQL',
+    name: 'SpotiShake',
     endpoint: {
       url: 'http://localhost:4000/graphql',
       skipSSLValidation: true,

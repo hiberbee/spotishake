@@ -1,4 +1,7 @@
 fragment TrackFragment on Track {
   id
   name
+  popularity
+  isExplicit
+  isPlayable
 }
