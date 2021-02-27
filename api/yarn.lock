@@ -2,14 +2,12 @@
 # yarn lockfile v1
 
 
-"@apollo/federation@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.17.0.tgz#549c3f8c8d5a33db28a4c628d8a9fb5430758c62"
-  integrity sha512-vSW/M8+SGdu5xALsA/RL37GgB+wNFZpXCyPAcg3b68c8x7uoQHgYwqwUu7D+GnAGeOpDUrNnFPdKAYW7elYkyQ==
+"@apollo/federation@^0.21.0":
+  version "0.21.2"
+  resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.21.2.tgz#2ced655254c704d248d9ffb581137e363b5d9e27"
+  integrity sha512-ZQ2TcRv7QO/84+SKFQrhppg+s0EcwBfSPT27DcoLYfEj8tsNjbUmsyxiH5CE2NJtG0F8y520nIM8tQ9wUrePsg==
   dependencies:
-    apollo-graphql "^0.4.0"
-    apollo-server-env "^2.4.5"
-    core-js "^3.4.0"
+    apollo-graphql "^0.6.0"
     lodash.xorby "^4.7.0"
 
 "@apollo/protobufjs@^1.0.3":
@@ -659,12 +657,30 @@ apollo-env@^0.6.5:
     node-fetch "^2.2.0"
     sha.js "^2.4.11"
 
+apollo-env@^0.6.6:
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/apollo-env/-/apollo-env-0.6.6.tgz#d7880805c4e96ee3d4142900a405176a04779438"
+  integrity sha512-hXI9PjJtzmD34XviBU+4sPMOxnifYrHVmxpjykqI/dUD2G3yTiuRaiQqwRwB2RCdwC1Ug/jBfoQ/NHDTnnjndQ==
+  dependencies:
+    "@types/node-fetch" "2.5.7"
+    core-js "^3.0.1"
+    node-fetch "^2.2.0"
+    sha.js "^2.4.11"
+
 apollo-graphql@^0.4.0:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/apollo-graphql/-/apollo-graphql-0.4.4.tgz#25f456b28a4419bb6a42071f8a56e19e15bb80be"
   integrity sha512-i012iRKT5nfsOaNMx4MTwHw2jrlyaF1zikpejxsGHsKIf3OngGvGh3pyw20bEmwj413OrNQpRxvvIz5A7W/8xw==
   dependencies:
     apollo-env "^0.6.5"
+    lodash.sortby "^4.7.0"
+
+apollo-graphql@^0.6.0:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/apollo-graphql/-/apollo-graphql-0.6.1.tgz#d0bf0aff76f445de3da10e08f6974f1bf65f5753"
+  integrity sha512-ZRXAV+k+hboCVS+FW86FW/QgnDR7gm/xMUwJPGXEbV53OLGuQQdIT0NCYK7AzzVkCfsbb7NJ3mmEclkZY9uuxQ==
+  dependencies:
+    apollo-env "^0.6.6"
     lodash.sortby "^4.7.0"
 
 apollo-link@^1.2.14:
@@ -1138,7 +1154,7 @@ core-js@^1.0.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
   integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
 
-core-js@^3.0.1, core-js@^3.4.0:
+core-js@^3.0.1:
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
   integrity sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA==
